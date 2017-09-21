@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  simple-site-requester-api:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    command: bash -c "python simple_site_requester/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ../:/usr/src/app
+    ports:
+      - '8000:8000'
+    depends_on:
+      - postgres
