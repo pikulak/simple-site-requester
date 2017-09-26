@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   postgres:
     image: "postgres:9.6.5"
     build:
@@ -12,3 +13,9 @@ services:
       - POSTGRES_USER=ssr_user
       - POSTGRES_PASSWORD=ssr_pass
       - SSR_DATABASE=ssr_db
+
+  rabbitmq:
+    image: rabbitmq:3.6.12
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
