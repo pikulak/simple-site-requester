@@ -3,3 +3,12 @@ version: '3'
 services:
   postgres:
     image: "postgres:9.6.5"
+    build:
+      context: ./postgres
+      dockerfile: ./Dockerfile
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=ssr_user
+      - POSTGRES_PASSWORD=ssr_pass
+      - SSR_DATABASE=ssr_db
