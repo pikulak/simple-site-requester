@@ -126,6 +126,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-# celery conf
+# Celery conf
 
 CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq:5672/'
+CELERY_BEAT_SCHEDULE = {
+    'add-every-30-seconds': {
+        'task': 'ssr_api.tasks.request_site',
+        'schedule': 5.0
+    }
+}
+CELERY_TIMEZONE = 'UTC'
