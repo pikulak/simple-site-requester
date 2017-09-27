@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+from .config_loader import RequesterConfigLoader
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -129,11 +130,11 @@ STATIC_URL = '/static/'
 # Celery conf
 
 CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq:5672/'
-CELERY_BEAT_SCHEDULE = {
-    'periodic-site-request': {
-        'task': 'ssr_api.tasks.request_site',
-        'schedule': 5.0,
-        'args': ('https://www.wp.pl',)
-    }
-}
+
+CELERY_BEAT_SCHEDULE = RequesterConfigLoader(
+    config_path="simple_site_requester/config.yml"
+    ).to_celery_beat_schedule(
+        schedule_name='periodic-site-request',
+        task_name='ssr_api.tasks.request_site'
+)
 CELERY_TIMEZONE = 'UTC'
