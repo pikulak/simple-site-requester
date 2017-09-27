@@ -17,6 +17,10 @@ Simple projects which uses Celery & Django REST to periodically requests sites
     ./manage.sh up-background
   ### Look into logs
     ./manage.sh logs -f
+  ### Start API only
+    ./manage.sh up ssr_api
+  ### Start Celery worker only
+    ./manage.sh up ssr_celery
   ### Stop whole app
     ./manage.sh down
   ### More
