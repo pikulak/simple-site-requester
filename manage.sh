@@ -14,6 +14,7 @@ PROJECT RELATED COMMANDS:
    clean             Remove everything in docker from simple_site_requester project
    clean-up          Remove everything in docker from simple_site_requester project, create and start containers
    up                Create and start containers
+   up-background     Create and start containers in background
    down              Stop and remove containers, networks, images, and volumes
 
 DOCKER RELATED COMMANDS:
@@ -64,9 +65,14 @@ case "${1}" in
         [ "`docker images -q | wc -l`" != "0" ] && docker rmi -f $(docker images -q)
         ;;
 
-    'up')
+    'up-background')
         echo "Starting containers in the background..."
-        docker-compose up -d 
+        docker-compose up -d
+        ;;
+
+    'up')
+        echo "Starting containers..."
+        docker-compose up
         ;;
 
     'down')

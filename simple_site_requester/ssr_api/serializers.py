@@ -6,5 +6,4 @@ class SiteRequestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SiteRequest
-        fields = ('url', 'datetime_started', 'datetime_ended',
-                  'elapsed_time', 'response_code')
+        fields = ('url', 'datetime_started', 'elapsed_time', 'response_code')

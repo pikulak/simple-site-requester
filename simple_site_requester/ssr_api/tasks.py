@@ -1,6 +1,5 @@
 import requests
 
-from django.utils import timezone
 from celery import shared_task
 from .models import SiteRequest
 
@@ -15,7 +14,6 @@ def request_site(url):
         elapsed_time = response.elapsed.total_seconds()
         response_code = response.status_code
 
-    request_obj.datetime_ended = timezone.now()
     request_obj.elapsed_time = elapsed_time
     request_obj.response_code = response_code
     request_obj.save()
