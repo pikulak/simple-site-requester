@@ -12,12 +12,17 @@ Simple projects which uses Celery & Django REST to periodically requests sites
   
 ## Using:
   ### Start whole app
-    `./manage.sh up`
+    ./manage.sh up
+  ### Start whole app in the background
+    ./manage.sh up-background
   ### Look into logs
-    `./manage.sh logs -f`
+    ./manage.sh logs -f
   ### Stop whole app
-    `./manage.sh down`
- 
+    ./manage.sh down
+  ### More
+  For more commands type:
+   `./manage.sh`
+   
  ## API
  Whole API will be available on `http://127.0.0.1:8000`
   ### Endpoints
