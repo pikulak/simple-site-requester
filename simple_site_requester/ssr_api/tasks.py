@@ -13,4 +13,4 @@ def request_site(url):
     request_obj.datetime_ended = timezone.now()
     request_obj.elapsed_time = elapsed_time
     request_obj.save()
-    print("Requested: {} with elapsed time: {} ms".format(url, elapsed_time))
+    print("Requested: {} with elapsed time: {}s".format(url, elapsed_time))

@@ -1,15 +1,33 @@
 version: '3'
 
 services:
-  simple-site-requester-api:
+
+  ssr_api:
     build:
       context: ../
       dockerfile: docker/Dockerfile
-    command: ["python", "simple_site_requester/manage.py", "runserver", "0.0.0.0:8000"]
+    command: docker/bin/run_ssr_api.sh
     volumes:
       - ../:/usr/src/app
     ports:
       - '8000:8000'
+    links:
+      - postgres
     depends_on:
       - postgres
+    entrypoint: /entrypoint.sh
+
+  ssr_celery:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    command: docker/bin/run_ssr_celery.sh
+    volumes:
+      - ../:/usr/src/app
+    links:
+      - postgres
+      - rabbitmq
+    depends_on:
+      - postgres
+      - rabbitmq
     entrypoint: /entrypoint.sh
