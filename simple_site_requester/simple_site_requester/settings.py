@@ -130,9 +130,10 @@ STATIC_URL = '/static/'
 
 CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq:5672/'
 CELERY_BEAT_SCHEDULE = {
-    'add-every-30-seconds': {
+    'periodic-site-request': {
         'task': 'ssr_api.tasks.request_site',
-        'schedule': 5.0
+        'schedule': 5.0,
+        'args': ('https://www.wp.pl',)
     }
 }
 CELERY_TIMEZONE = 'UTC'
