@@ -1,6 +1,9 @@
 # simple-site-requester
 
-Simple projects which uses Celery & Django REST to periodically requests sites
+Simple project which uses Celery & Django REST to periodically requests sites.
+Elapsed response time & codes are being saved to database.
+Sites can be loaded from YAML file (look [here](https://github.com/pikulak/simple-site-requester/blob/develop/simple_site_requester/simple_site_requester/config.yml)).
+This app shares simple API endpoint.
 
 ### Requirements:
   * docker-compose
