@@ -51,7 +51,7 @@ case "${1}" in
         ;;
 
     'rm')
-        echo "Stopping and removing glopal..."
+        echo "Stopping and removing..."
         docker-compose down
         docker-compose rm -sfv
         ;;
